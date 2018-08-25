@@ -60,7 +60,11 @@ models.sequelize.sync().then(function() {
  
 });
  
- 
+ app.post("/testd", (req, res) => {
+     console.log('hi');
+     res.send({hi: 'hello'})
+ })
+
 app.listen(5000, function(err) {
     if (!err)
         console.log("Site is live");   
