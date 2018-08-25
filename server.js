@@ -42,7 +42,7 @@ var models = require("./app/models");
  
 //Routes
 var authRoute = require('./app/routes/auth.js')(app,passport);
- 
+var plaid = require('./app/routes/plaid.js')(app)
  
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);
