@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "webpack-dev-server"
   },
   "author": "dk",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^6.5.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
@@ -22,5 +25,10 @@
     "passport-local": "^1.0.0",
     "plaid": "^2.8.0",
     "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }
