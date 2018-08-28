@@ -25,6 +25,11 @@ module.exports = function(sequelize, Sequelize) {
         about: {
             type: Sequelize.TEXT
         },
+
+        phone: {
+            type: Sequelize.STRING,
+            notEmpty: true
+        },
  
         email: {
             type: Sequelize.STRING,

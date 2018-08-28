@@ -23,25 +23,25 @@ module.exports = function(passport, user) {
  
     passport.use('local-signup', new LocalStrategy(
         {
-            usernameField: 'email',
+            usernameField: 'phone',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
  
-        function(req, email, password, done) {
+        function(req, phone, password, done) {
             var generateHash = function(password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
  
             User.findOne({
                 where: {
-                    email: email
+                    phone: phone
                 }
             }).then(function(user) {
                 if (user)
                 {
                     return done(null, false, {
-                        message: 'That email is already taken'
+                        message: 'That phone # is already taken'
                     });
                 } else
                 {
@@ -51,7 +51,8 @@ module.exports = function(passport, user) {
                     var data =
  
                         {
-                            email: email,
+                            email: req.body.email,
+                            phone: phone,
                             password: userPassword,
                             firstname: req.body.firstname,
                             lastname: req.body.lastname
@@ -75,12 +76,12 @@ module.exports = function(passport, user) {
     passport.use('local-signin', new LocalStrategy(
         {
             // by default, local strategy uses username and password, we will override with email
-            usernameField: 'email',
+            usernameField: 'phone',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
     
-        function(req, email, password, done) {
+        function(req, phone, password, done) {
     
             var User = user;
             var isValidPassword = function(userpass, password) {
@@ -89,13 +90,13 @@ module.exports = function(passport, user) {
     
             User.findOne({
                 where: {
-                    email: email
+                    phone: phone
                 }
             }).then(function(user) {
     
                 if (!user) {
                     return done(null, false, {
-                        message: 'Email does not exist'
+                        message: 'phone # does not exist'
                     });
                 }
     
