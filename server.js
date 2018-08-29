@@ -5,7 +5,8 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
- 
+var cors = require('cors');
+
  
 //For BodyParser
 app.use(bodyParser.urlencoded({
@@ -13,6 +14,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
  
+app.use(cors());
+
  
 // For Passport
 app.use(session({
