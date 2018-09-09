@@ -5,7 +5,7 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var config = {
     username: "root",
-    host: "35.202.51.48",
+    host: process.env.HOST,
     password: process.env.DBPASS,
     database: "test",
     dialect: "mysql"
