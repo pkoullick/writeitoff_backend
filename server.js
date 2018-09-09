@@ -40,8 +40,9 @@ app.get('/', function(req, res) {
 var models = require("./app/models");
  
 //Routes
-var authRoute = require('./app/routes/auth.js')(app,passport);
-var plaid = require('./app/routes/plaid.js')(app)
+var authRoute = require('./app/routes/auth.js')(app, passport);
+var plaid = require('./app/routes/plaid.js')(app);
+var sms = require('./app/routes/twilioSMS.js')(app);
  
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);
